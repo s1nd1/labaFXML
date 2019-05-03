@@ -1,0 +1,39 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="database" type="databaseType"/>
+    <xs:complexType name="Kniga">
+        <xs:sequence>
+
+            <xs:element name="Name">
+            </xs:element>
+
+            <xs:element name="Avtor">
+            </xs:element>
+
+            <xs:element name="God">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="1800"/>
+                        <xs:maxInclusive value="2019"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="Izdanie">
+            </xs:element>
+
+        </xs:sequence>
+        <xs:attribute type="xs:int" name="id" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Knigi">
+        <xs:sequence>
+            <xs:element type="Kniga" name="Knigaspisok" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="databaseType">
+        <xs:sequence>
+            <xs:element type="Knigi" name="Knigis"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
